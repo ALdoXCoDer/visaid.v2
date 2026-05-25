@@ -2,86 +2,895 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Visa ID</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-body{
-font-family:Poppins;
+
+*{
 margin:0;
-background:#f8f9fb;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#f5f5f5;
+color:#111;
+overflow-x:hidden;
 }
 
 /* NAVBAR */
+
 .navbar{
+position:fixed;
+top:15px;
+left:50%;
+transform:translateX(-50%);
+width:95%;
+background:#fff;
+padding:16px 28px;
+border-radius:22px;
 display:flex;
 justify-content:space-between;
-padding:20px 50px;
-background:white;
-box-shadow:0 5px 20px rgba(0,0,0,0.05);
+align-items:center;
+z-index:999;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
-.btn{
-background:black;
-color:white;
-padding:12px 25px;
-border-radius:30px;
+.logo{
+font-size:28px;
+font-weight:800;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.logo span{
+color:#2ecc71;
+}
+
+.nav-links{
+display:flex;
+gap:35px;
+align-items:center;
+}
+
+.nav-links a{
 text-decoration:none;
+color:#111;
+font-size:14px;
+font-weight:600;
 }
 
 /* HERO */
+
 .hero{
-margin:30px;
-border-radius:25px;
+padding:110px 2.5% 70px;
+}
+
+.hero-box{
+height:650px;
+border-radius:38px;
 overflow:hidden;
 position:relative;
 }
 
-.hero img{
+.hero-box img{
 width:100%;
-height:550px;
+height:100%;
 object-fit:cover;
 }
 
 .overlay{
 position:absolute;
 inset:0;
-background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);
+background:linear-gradient(to right,rgba(0,0,0,.65),rgba(0,0,0,.15));
 }
 
-.content{
+.hero-content{
 position:absolute;
-bottom:50px;
-left:50px;
+top:50%;
+transform:translateY(-50%);
+left:60px;
 color:white;
-max-width:500px;
+max-width:650px;
 }
 
-h1{font-size:42px;margin:0}
+.hero-content h1{
+font-size:78px;
+line-height:1;
+font-weight:800;
+margin-bottom:30px;
+}
+
+.stats{
+display:flex;
+gap:30px;
+margin-bottom:35px;
+flex-wrap:wrap;
+}
+
+.stats div h2{
+font-size:46px;
+}
+
+.stats div p{
+font-size:15px;
+opacity:.9;
+}
+
+.info-cards{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+margin-bottom:35px;
+}
+
+.info-card{
+width:170px;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.3);
+padding:22px;
+border-radius:22px;
+}
+
+.info-card h3{
+font-size:15px;
+line-height:1.5;
+font-weight:600;
+}
+
+.hero-buttons{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.btn-white{
+padding:18px 34px;
+background:white;
+border-radius:60px;
+text-decoration:none;
+color:black;
+font-weight:700;
+}
+
+.btn-dark{
+padding:18px 34px;
+border:1.5px solid rgba(255,255,255,.5);
+border-radius:60px;
+text-decoration:none;
+color:white;
+font-weight:600;
+backdrop-filter:blur(10px);
+}
+
+/* MEDIA */
+
+.media{
+padding:40px 5% 90px;
+text-align:center;
+}
+
+.media p{
+margin-bottom:50px;
+font-weight:600;
+color:#555;
+}
+
+.media-logos{
+display:flex;
+justify-content:center;
+gap:70px;
+flex-wrap:wrap;
+}
+
+.media-logos h2{
+font-size:26px;
+color:#777;
+}
+
+/* TESTI */
+
+.section-title{
+text-align:center;
+margin-bottom:60px;
+}
+
+.section-title h1{
+font-size:64px;
+margin-bottom:15px;
+}
+
+.section-title p{
+font-size:34px;
+color:#2ecc71;
+font-weight:700;
+}
+
+.testimonials{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+gap:20px;
+padding:0 5% 100px;
+}
+
+.testi{
+background:white;
+padding:28px;
+border-radius:22px;
+border:1px solid #eee;
+}
+
+.testi h3{
+font-size:17px;
+line-height:1.8;
+margin:18px 0;
+color:#333;
+}
+
+.testi span{
+color:#777;
+font-size:14px;
+}
+
+/* CTA */
+
+.cta{
+padding:30px 5% 100px;
+text-align:center;
+}
+
+.cta-buttons{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+/* WHY */
+
+.why{
+padding:100px 5%;
+}
+
+.why-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:50px;
+margin-top:70px;
+}
+
+.why-box{
+display:flex;
+gap:22px;
+}
+
+.icon{
+width:60px;
+height:60px;
+border-radius:18px;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+.why-box h2{
+margin-bottom:12px;
+font-size:30px;
+}
+
+.why-box p{
+line-height:1.8;
+color:#666;
+}
+
+/* STEPS */
+
+.steps{
+padding:100px 5%;
+text-align:center;
+}
+
+.step-line{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+margin-top:70px;
+}
+
+.step{
+position:relative;
+}
+
+.circle{
+width:28px;
+height:28px;
+background:#2ecc71;
+border-radius:50%;
+margin:auto auto 20px;
+border:5px solid #d1fae5;
+}
+
+.step h3{
+font-size:28px;
+margin-bottom:12px;
+}
+
+.step p{
+line-height:1.8;
+color:#666;
+}
+
+/* FAQ */
+
+.faq{
+padding:100px 5%;
+}
+
+.faq-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:40px;
+margin-top:70px;
+}
+
+.faq-box{
+display:flex;
+gap:20px;
+}
+
+.faq-icon{
+width:58px;
+height:58px;
+border-radius:18px;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+.faq-box h2{
+font-size:30px;
+margin-bottom:10px;
+}
+
+.faq-box p{
+line-height:1.8;
+color:#666;
+}
+
+/* BANNER */
+
+.banner{
+padding:40px 2.5% 100px;
+}
+
+.banner-box{
+height:420px;
+border-radius:35px;
+overflow:hidden;
+position:relative;
+}
+
+.banner-box img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.banner-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.35);
+}
+
+.banner-content{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+left:60px;
+color:white;
+}
+
+.banner-content h1{
+font-size:70px;
+line-height:1.1;
+margin-bottom:35px;
+}
+
+/* FOOTER */
+
+.footer{
+padding:70px 5%;
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:50px;
+background:white;
+}
+
+.footer p{
+line-height:1.8;
+color:#666;
+margin-top:20px;
+}
+
+.footer h3{
+margin-bottom:20px;
+font-size:24px;
+}
+
+.footer-links{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.footer-links a{
+text-decoration:none;
+color:#555;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+.hero-content h1{
+font-size:56px;
+}
+
+.section-title h1{
+font-size:46px;
+}
+
+.why-grid,
+.faq-grid,
+.step-line,
+.footer{
+grid-template-columns:1fr;
+}
+
+.hero-box{
+height:850px;
+}
+
+.hero-content{
+left:35px;
+right:35px;
+}
+
+.banner-content h1{
+font-size:46px;
+}
+
+}
+
+@media(max-width:700px){
+
+.nav-links{
+display:none;
+}
+
+.hero-content h1{
+font-size:46px;
+}
+
+.hero-box{
+height:760px;
+}
+
+.stats div h2{
+font-size:34px;
+}
+
+.info-card{
+width:100%;
+}
+
+.section-title h1{
+font-size:38px;
+}
+
+.section-title p{
+font-size:24px;
+}
+
+.banner-content{
+left:30px;
+right:30px;
+}
+
+.banner-content h1{
+font-size:38px;
+}
+
+}
 
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
-<h2>Visa ID</h2>
-<a href="negara.html" class="btn">Booking Sekarang</a>
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">
+<span>●</span>VisaID
 </div>
 
-<div class="hero">
-<img src="https://images.unsplash.com/photo-1494526585095-c41746248156">
+<div class="nav-links">
+<a href="#">Katalog</a>
+<a href="#">Kenapa VisaID?</a>
+<a href="#">Cara Kerja</a>
+<a href="#">Testimoni</a>
+<a href="#">FAQ</a>
+<a href="#">Blog</a>
+<a href="#">Partnership</a>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-box">
+
+<img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?q=80&w=1974&auto=format&fit=crop">
+
 <div class="overlay"></div>
 
-<div class="content">
-<h1>Visa Internasional Tanpa Ribet</h1>
-<p>Proses cepat, aman, dan terpercaya</p>
-<br>
-<a href="negara.html" class="btn">Mulai Sekarang</a>
+<div class="hero-content">
+
+<h1>
+Daftar Visa<br>
+Simpel, Mudah<br>
+& Cepat
+</h1>
+
+<div class="stats">
+
+<div>
+<h2>99%</h2>
+<p>Approval Rate</p>
+</div>
+
+<div>
+<h2>25K+</h2>
+<p>Visa Approved</p>
+</div>
+
+<div>
+<h2>100+</h2>
+<p>Negara Tujuan</p>
 </div>
 
 </div>
+
+<div class="info-cards">
+
+<div class="info-card">
+<h3>Booking Flight & Hotel Disediakan</h3>
+</div>
+
+<div class="info-card">
+<h3>Pengajuan Online Tanpa ke Kedutaan</h3>
+</div>
+
+<div class="info-card">
+<h3>Gratis Konsultasi dengan Visa Expert</h3>
+</div>
+
+<div class="info-card">
+<h3>Dokumen Persyaratan Disiapkan</h3>
+</div>
+
+</div>
+
+<div class="hero-buttons">
+
+<a href="negara.html" class="btn-white">
+Booking Sekarang
+</a>
+
+<a href="https://wa.me/628816906696" class="btn-dark">
+Konsultasi dengan Kami
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MEDIA -->
+
+<section class="media">
+
+<p>Diliput oleh Media Terkemuka:</p>
+
+<div class="media-logos">
+<h2>TEMPO</h2>
+<h2>TheJakartaPost</h2>
+<h2>CNN</h2>
+<h2>Bisnis Indonesia</h2>
+</div>
+
+</section>
+
+<!-- TESTIMONI -->
+
+<section>
+
+<div class="section-title">
+<h1>Kata Mereka tentang VisaID</h1>
+<p>✓ 25.000+ Visa Approved</p>
+</div>
+
+<div class="testimonials">
+
+<div class="testi">
+🇦🇺
+<h3>"Pertama kali bikin visa di VisaID sangat puas dan pelayanannya cepat."</h3>
+<span>July 25</span>
+</div>
+
+<div class="testi">
+🇬🇧
+<h3>"Pelayanan cepat dan konsultasi sangat membantu."</h3>
+<span>July 17</span>
+</div>
+
+<div class="testi">
+🇰🇷
+<h3>"GoVisa sangat membantu dalam pengurusan visa."</h3>
+<span>July 24</span>
+</div>
+
+<div class="testi">
+🇫🇷
+<h3>"Semua urusan mudah dan visa approve."</h3>
+<span>July 25</span>
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<div class="cta-buttons">
+
+<a href="negara.html" class="btn-white">
+Booking Sekarang
+</a>
+
+<a href="https://wa.me/628816906696" class="btn-dark" style="color:black;border:1px solid #ccc;">
+Konsultasi dengan Kami
+</a>
+
+</div>
+
+</section>
+
+<!-- WHY -->
+
+<section class="why">
+
+<div class="section-title">
+<h1>Kenapa Memilih VisaID?</h1>
+</div>
+
+<div class="why-grid">
+
+<div class="why-box">
+<div class="icon">✓</div>
+<div>
+<h2>Mudah dan Praktis</h2>
+<p>Semua proses kami bantu dari awal hingga selesai.</p>
+</div>
+</div>
+
+<div class="why-box">
+<div class="icon">💬</div>
+<div>
+<h2>Konsultasi Gratis</h2>
+<p>Konsultasi langsung dengan visa expert profesional.</p>
+</div>
+</div>
+
+<div class="why-box">
+<div class="icon">📄</div>
+<div>
+<h2>Dokumen Lengkap</h2>
+<p>Dokumen persyaratan disiapkan dengan rapi.</p>
+</div>
+</div>
+
+<div class="why-box">
+<div class="icon">🌍</div>
+<div>
+<h2>100+ Negara</h2>
+<p>Melayani pengajuan visa berbagai negara.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- STEPS -->
+
+<section class="steps">
+
+<div class="section-title">
+<h1>Cara Kerja VisaID</h1>
+</div>
+
+<div class="step-line">
+
+<div class="step">
+<div class="circle"></div>
+<h3>Konsultasi Awal</h3>
+<p>Hubungi tim kami untuk konsultasi gratis.</p>
+</div>
+
+<div class="step">
+<div class="circle"></div>
+<h3>Pengumpulan Dokumen</h3>
+<p>Kirim dokumen persyaratan visa.</p>
+</div>
+
+<div class="step">
+<div class="circle"></div>
+<h3>Proses Visa</h3>
+<p>Tim kami memproses aplikasi visa Anda.</p>
+</div>
+
+<div class="step">
+<div class="circle"></div>
+<h3>Visa Selesai</h3>
+<p>Visa siap digunakan dan dikirim.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FAQ -->
+
+<section class="faq">
+
+<div class="section-title">
+<h1>Frequently Asked Questions</h1>
+</div>
+
+<div class="faq-grid">
+
+<div class="faq-box">
+<div class="faq-icon">?</div>
+<div>
+<h2>Apa itu VisaID?</h2>
+<p>VisaID membantu pengurusan visa menjadi lebih mudah dan cepat.</p>
+</div>
+</div>
+
+<div class="faq-box">
+<div class="faq-icon">🔒</div>
+<div>
+<h2>Apakah data aman?</h2>
+<p>Semua data client aman dan terenkripsi.</p>
+</div>
+</div>
+
+<div class="faq-box">
+<div class="faq-icon">⏱</div>
+<div>
+<h2>Berapa lama proses?</h2>
+<p>Proses berbeda tergantung negara tujuan.</p>
+</div>
+</div>
+
+<div class="faq-box">
+<div class="faq-icon">📄</div>
+<div>
+<h2>Dokumen apa saja?</h2>
+<p>Dokumen berbeda tergantung jenis visa.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- BANNER -->
+
+<section class="banner">
+
+<div class="banner-box">
+
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1974&auto=format&fit=crop">
+
+<div class="banner-overlay"></div>
+
+<div class="banner-content">
+
+<h1>
+Mulai Proses Pembuatan Visa Anda Sekarang!
+</h1>
+
+<div class="hero-buttons">
+
+<a href="negara.html" class="btn-white">
+Booking Sekarang
+</a>
+
+<a href="https://wa.me/628816906696" class="btn-dark">
+Konsultasi dengan Kami
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div>
+<div class="logo">
+<span>●</span>VisaID
+</div>
+
+<p>
+PT VisaID Ventura Teknologi adalah layanan pengurusan visa internasional terpercaya dengan proses mudah dan cepat.
+</p>
+</div>
+
+<div>
+
+<h3>Company</h3>
+
+<div class="footer-links">
+<a href="#">Home</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
+
+</div>
+
+<div>
+
+<h3>Contact</h3>
+
+<div class="footer-links">
+<a href="#">08816906696</a>
+<a href="#">support@visaid.id</a>
+<a href="#">Jakarta Selatan</a>
+</div>
+
+</div>
+
+</footer>
 
 </body>
 </html>
