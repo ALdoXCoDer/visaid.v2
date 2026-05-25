@@ -2,90 +2,753 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Negara</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pilih Negara</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-body{font-family:Poppins;background:#f5f5f5;margin:0}
 
-h1{text-align:center;padding:30px}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-padding:40px;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
 }
 
-.card{
-border-radius:20px;
-overflow:hidden;
+body{
+background:#f5f5f5;
+color:#111;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:15px;
+left:50%;
+transform:translateX(-50%);
+width:95%;
 background:white;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-transition:0.3s;
+padding:16px 28px;
+border-radius:22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:999;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
-.card:hover{
-transform:translateY(-5px);
+.logo{
+font-size:28px;
+font-weight:800;
+display:flex;
+align-items:center;
+gap:6px;
 }
 
-.card img{
-width:100%;
-height:250px;
-object-fit:cover;
-transition:0.5s;
+.logo span{
+color:#2ecc71;
 }
 
-.card:hover img{
-transform:scale(1.1);
+.nav-links{
+display:flex;
+gap:35px;
 }
 
-.content{
-padding:15px;
-}
-
-a{
-display:inline-block;
-margin-top:10px;
-background:black;
-color:white;
-padding:10px 15px;
+.nav-links a{
 text-decoration:none;
-border-radius:10px;
+color:#111;
+font-size:14px;
+font-weight:600;
 }
+
+/* HERO */
+
+.hero{
+padding:120px 5% 70px;
+}
+
+.hero-box{
+height:430px;
+border-radius:38px;
+overflow:hidden;
+position:relative;
+}
+
+.hero-box img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to right,rgba(0,0,0,.7),rgba(0,0,0,.2));
+}
+
+.hero-content{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+left:60px;
+color:white;
+max-width:650px;
+}
+
+.hero-content h1{
+font-size:74px;
+line-height:1;
+margin-bottom:20px;
+font-weight:800;
+}
+
+.hero-content p{
+font-size:18px;
+line-height:1.8;
+opacity:.95;
+}
+
+/* SEARCH */
+
+.search-section{
+padding:0 5% 60px;
+}
+
+.search-box{
+background:white;
+padding:20px 25px;
+border-radius:24px;
+display:flex;
+align-items:center;
+gap:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.04);
+}
+
+.search-box input{
+border:none;
+outline:none;
+width:100%;
+font-size:16px;
+background:transparent;
+}
+
+/* SECTION TITLE */
+
+.section-title{
+text-align:center;
+margin-bottom:60px;
+}
+
+.section-title h1{
+font-size:60px;
+margin-bottom:15px;
+}
+
+.section-title p{
+font-size:18px;
+color:#666;
+}
+
+/* COUNTRY */
+
+.country-section{
+padding:0 5% 100px;
+}
+
+.country-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.country-card{
+background:white;
+border-radius:32px;
+overflow:hidden;
+transition:.3s;
+border:1px solid #eee;
+}
+
+.country-card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,.07);
+}
+
+.country-image{
+height:260px;
+position:relative;
+overflow:hidden;
+}
+
+.country-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s;
+}
+
+.country-card:hover img{
+transform:scale(1.08);
+}
+
+.country-badge{
+position:absolute;
+top:18px;
+left:18px;
+background:rgba(255,255,255,.95);
+padding:10px 16px;
+border-radius:50px;
+font-size:13px;
+font-weight:700;
+}
+
+.country-content{
+padding:28px;
+}
+
+.country-content h2{
+font-size:34px;
+margin-bottom:12px;
+}
+
+.country-content p{
+line-height:1.8;
+color:#666;
+margin-bottom:25px;
+}
+
+.country-info{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+margin-bottom:30px;
+}
+
+.info{
+background:#f3f4f6;
+padding:10px 16px;
+border-radius:14px;
+font-size:14px;
+font-weight:600;
+}
+
+.country-btn{
+display:block;
+width:100%;
+padding:18px;
+text-align:center;
+border-radius:60px;
+background:#111;
+color:white;
+text-decoration:none;
+font-weight:700;
+transition:.3s;
+}
+
+.country-btn:hover{
+opacity:.92;
+}
+
+/* CTA */
+
+.cta{
+padding:0 5% 100px;
+}
+
+.cta-box{
+background:white;
+border-radius:40px;
+padding:70px;
+text-align:center;
+}
+
+.cta-box h1{
+font-size:58px;
+margin-bottom:20px;
+}
+
+.cta-box p{
+max-width:700px;
+margin:auto;
+line-height:1.9;
+color:#666;
+margin-bottom:35px;
+}
+
+.cta-buttons{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.btn-dark{
+padding:18px 34px;
+background:#111;
+border-radius:60px;
+color:white;
+text-decoration:none;
+font-weight:700;
+}
+
+.btn-light{
+padding:18px 34px;
+border:1px solid #ddd;
+border-radius:60px;
+color:#111;
+text-decoration:none;
+font-weight:700;
+background:white;
+}
+
+/* FOOTER */
+
+.footer{
+padding:70px 5%;
+background:white;
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:50px;
+}
+
+.footer h3{
+margin-bottom:20px;
+font-size:24px;
+}
+
+.footer p{
+line-height:1.8;
+color:#666;
+margin-top:20px;
+}
+
+.footer-links{
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+.footer-links a{
+text-decoration:none;
+color:#555;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+.footer{
+grid-template-columns:1fr;
+}
+
+.hero-content h1{
+font-size:52px;
+}
+
+.cta-box h1{
+font-size:42px;
+}
+
+}
+
+@media(max-width:700px){
+
+.nav-links{
+display:none;
+}
+
+.hero-box{
+height:500px;
+}
+
+.hero-content{
+left:30px;
+right:30px;
+}
+
+.hero-content h1{
+font-size:44px;
+}
+
+.section-title h1{
+font-size:42px;
+}
+
+.cta-box{
+padding:40px 25px;
+}
+
+.cta-box h1{
+font-size:34px;
+}
+
+.country-content h2{
+font-size:28px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<h1>Pilih Negara 🌍</h1>
+<!-- NAVBAR -->
 
-<div class="grid">
+<nav class="navbar">
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1494526585095-c41746248156">
-<div class="content">
+<div class="logo">
+<span>●</span>VisaID
+</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="#">Negara</a>
+<a href="#">FAQ</a>
+<a href="#">Kontak</a>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-box">
+
+<img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=1974&auto=format&fit=crop">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<h1>
+Pilih Negara<br>
+Tujuan Visa
+</h1>
+
+<p>
+Temukan layanan pengurusan visa premium untuk berbagai negara populer di dunia.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SEARCH -->
+
+<section class="search-section">
+
+<div class="search-box">
+🔍
+<input type="text" id="searchInput" placeholder="Cari negara tujuan...">
+</div>
+
+</section>
+
+<!-- COUNTRY -->
+
+<section class="country-section">
+
+<div class="section-title">
+<h1>Negara Populer</h1>
+<p>Pilih negara tujuan untuk melanjutkan pengajuan visa</p>
+</div>
+
+<div class="country-grid" id="countryGrid">
+
+<!-- USA -->
+
+<div class="country-card">
+
+<div class="country-image">
+<img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1974&auto=format&fit=crop">
+<div class="country-badge">USA VISA</div>
+</div>
+
+<div class="country-content">
+
 <h2>Amerika Serikat</h2>
-<a href="paket.html?negara=Amerika">Booking</a>
-</div>
+
+<p>
+Visa turis, bisnis, dan kunjungan ke Amerika Serikat dengan proses premium.
+</p>
+
+<div class="country-info">
+<div class="info">B1/B2</div>
+<div class="info">Fast Process</div>
+<div class="info">Interview</div>
 </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e">
-<div class="content">
+<a href="paket.html?negara=Amerika" class="country-btn">
+Pilih Negara
+</a>
+
+</div>
+
+</div>
+
+<!-- JAPAN -->
+
+<div class="country-card">
+
+<div class="country-image">
+<img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1974&auto=format&fit=crop">
+<div class="country-badge">JAPAN VISA</div>
+</div>
+
+<div class="country-content">
+
 <h2>Jepang</h2>
-<a href="paket.html?negara=Jepang">Booking</a>
-</div>
+
+<p>
+Pengajuan visa Jepang mudah dengan konsultasi dan bantuan dokumen lengkap.
+</p>
+
+<div class="country-info">
+<div class="info">Tourist</div>
+<div class="info">E-Visa</div>
+<div class="info">Fast Approval</div>
 </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad">
-<div class="content">
+<a href="paket.html?negara=Jepang" class="country-btn">
+Pilih Negara
+</a>
+
+</div>
+
+</div>
+
+<!-- KOREA -->
+
+<div class="country-card">
+
+<div class="country-image">
+<img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?q=80&w=1974&auto=format&fit=crop">
+<div class="country-badge">KOREA VISA</div>
+</div>
+
+<div class="country-content">
+
 <h2>Korea Selatan</h2>
-<a href="paket.html?negara=Korea">Booking</a>
+
+<p>
+Layanan visa Korea Selatan dengan proses cepat dan aman bersama VisaID.
+</p>
+
+<div class="country-info">
+<div class="info">Tourist</div>
+<div class="info">Express</div>
+<div class="info">Premium</div>
 </div>
+
+<a href="paket.html?negara=Korea" class="country-btn">
+Pilih Negara
+</a>
+
 </div>
 
 </div>
+
+<!-- CHINA -->
+
+<div class="country-card">
+
+<div class="country-image">
+<img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=1974&auto=format&fit=crop">
+<div class="country-badge">CHINA VISA</div>
+</div>
+
+<div class="country-content">
+
+<h2>China</h2>
+
+<p>
+Pengurusan visa China profesional untuk perjalanan bisnis maupun wisata.
+</p>
+
+<div class="country-info">
+<div class="info">Business</div>
+<div class="info">Tourist</div>
+<div class="info">Fast Track</div>
+</div>
+
+<a href="paket.html?negara=China" class="country-btn">
+Pilih Negara
+</a>
+
+</div>
+
+</div>
+
+<!-- UK -->
+
+<div class="country-card">
+
+<div class="country-image">
+<img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1974&auto=format&fit=crop">
+<div class="country-badge">UK VISA</div>
+</div>
+
+<div class="country-content">
+
+<h2>Inggris</h2>
+
+<p>
+Layanan visa Inggris lengkap dengan panduan dokumen dan konsultasi.
+</p>
+
+<div class="country-info">
+<div class="info">Visitor</div>
+<div class="info">Priority</div>
+<div class="info">Premium</div>
+</div>
+
+<a href="paket.html?negara=Inggris" class="country-btn">
+Pilih Negara
+</a>
+
+</div>
+
+</div>
+
+<!-- SCHENGEN -->
+
+<div class="country-card">
+
+<div class="country-image">
+<img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=1974&auto=format&fit=crop">
+<div class="country-badge">SCHENGEN VISA</div>
+</div>
+
+<div class="country-content">
+
+<h2>Schengen</h2>
+
+<p>
+Pengajuan visa Schengen untuk berbagai negara Eropa dengan approval tinggi.
+</p>
+
+<div class="country-info">
+<div class="info">Europe</div>
+<div class="info">Tourist</div>
+<div class="info">Easy Process</div>
+</div>
+
+<a href="paket.html?negara=Schengen" class="country-btn">
+Pilih Negara
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<div class="cta-box">
+
+<h1>
+Tidak Menemukan Negara Tujuan?
+</h1>
+
+<p>
+Hubungi admin VisaID untuk konsultasi visa berbagai negara lainnya dengan proses premium dan cepat.
+</p>
+
+<div class="cta-buttons">
+
+<a href="paket.html" class="btn-dark">
+Booking Sekarang
+</a>
+
+<a href="https://wa.me/628816906696" class="btn-light">
+Konsultasi Admin
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div>
+
+<div class="logo">
+<span>●</span>VisaID
+</div>
+
+<p>
+Layanan pengurusan visa internasional terpercaya dengan proses cepat, aman, dan profesional.
+</p>
+
+</div>
+
+<div>
+
+<h3>Company</h3>
+
+<div class="footer-links">
+<a href="#">Home</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms</a>
+</div>
+
+</div>
+
+<div>
+
+<h3>Contact</h3>
+
+<div class="footer-links">
+<a href="#">08816906696</a>
+<a href="#">support@visaid.id</a>
+<a href="#">Jakarta Selatan</a>
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+const searchInput = document.getElementById('searchInput');
+const cards = document.querySelectorAll('.country-card');
+
+searchInput.addEventListener('keyup', function(){
+
+const filter = searchInput.value.toLowerCase();
+
+cards.forEach(card => {
+
+const text = card.innerText.toLowerCase();
+
+if(text.includes(filter)){
+card.style.display = 'block';
+}else{
+card.style.display = 'none';
+}
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
