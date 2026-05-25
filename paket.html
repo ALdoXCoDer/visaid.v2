@@ -1,135 +1,785 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Paket</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Paket Visa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-body{font-family:Poppins;background:#f5f5f5;margin:0}
 
-/* TITLE */
-h1{text-align:center;padding:30px}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
 
-/* CARD */
-.card{
+body{
+background:#f5f5f5;
+color:#111;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:15px;
+left:50%;
+transform:translateX(-50%);
+width:95%;
 background:white;
-padding:25px;
-margin:20px;
-border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
+padding:16px 28px;
+border-radius:22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:999;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
-/* BUTTON */
-button{
-padding:12px;
-background:black;
-color:white;
-border:none;
-border-radius:10px;
+.logo{
+font-size:28px;
+font-weight:800;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.logo span{
+color:#2ecc71;
+}
+
+.nav-links{
+display:flex;
+gap:35px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#111;
+font-size:14px;
+font-weight:600;
+}
+
+/* HERO */
+
+.hero{
+padding:120px 5% 70px;
+}
+
+.hero-box{
+height:420px;
+border-radius:35px;
+overflow:hidden;
+position:relative;
+}
+
+.hero-box img{
 width:100%;
+height:100%;
+object-fit:cover;
 }
 
-/* POPUP */
-.popup{
-display:none;
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to right,rgba(0,0,0,.7),rgba(0,0,0,.2));
+}
+
+.hero-content{
+position:absolute;
+top:50%;
+left:60px;
+transform:translateY(-50%);
+color:white;
+max-width:600px;
+}
+
+.hero-content h1{
+font-size:72px;
+line-height:1;
+margin-bottom:20px;
+font-weight:800;
+}
+
+.hero-content p{
+line-height:1.9;
+font-size:18px;
+opacity:.95;
+}
+
+/* PACKAGE */
+
+.package-section{
+padding:20px 5% 100px;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:70px;
+}
+
+.section-title h1{
+font-size:60px;
+margin-bottom:15px;
+}
+
+.section-title p{
+font-size:18px;
+color:#666;
+}
+
+.packages{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.package{
+background:white;
+border-radius:30px;
+padding:35px;
+position:relative;
+border:1px solid #eee;
+transition:.3s;
+}
+
+.package:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,.06);
+}
+
+.best{
+position:absolute;
+top:20px;
+right:20px;
+background:#111;
+color:white;
+padding:8px 16px;
+border-radius:50px;
+font-size:13px;
+font-weight:600;
+}
+
+.package h2{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.price{
+font-size:52px;
+font-weight:800;
+margin-bottom:25px;
+}
+
+.price span{
+font-size:18px;
+font-weight:500;
+color:#777;
+}
+
+.feature-list{
+display:flex;
+flex-direction:column;
+gap:18px;
+margin-bottom:35px;
+}
+
+.feature{
+display:flex;
+align-items:center;
+gap:12px;
+font-size:16px;
+color:#333;
+}
+
+.feature i{
+width:28px;
+height:28px;
+border-radius:50%;
+background:#dcfce7;
+display:flex;
+align-items:center;
+justify-content:center;
+font-style:normal;
+color:#16a34a;
+font-size:14px;
+}
+
+.btn{
+width:100%;
+padding:18px;
+border:none;
+border-radius:60px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn-dark{
+background:#111;
+color:white;
+}
+
+.btn-dark:hover{
+opacity:.9;
+}
+
+.btn-light{
+background:#f3f4f6;
+color:#111;
+}
+
+/* BENEFIT */
+
+.benefit{
+padding:0 5% 100px;
+}
+
+.benefit-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.benefit-box{
+background:white;
+padding:35px;
+border-radius:28px;
+text-align:center;
+border:1px solid #eee;
+}
+
+.benefit-icon{
+width:70px;
+height:70px;
+margin:auto;
+margin-bottom:20px;
+border-radius:20px;
+background:#f3f4f6;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+}
+
+.benefit-box h3{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.benefit-box p{
+line-height:1.8;
+color:#666;
+}
+
+/* FORM MODAL */
+
+.modal{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.6);
-justify-content:center;
+background:rgba(0,0,0,.5);
+display:none;
 align-items:center;
+justify-content:center;
+padding:20px;
+z-index:9999;
 }
 
-.box{
-background:white;
-padding:25px;
-border-radius:15px;
-width:320px;
-animation:fade 0.3s;
-}
-
-@keyframes fade{
-from{transform:scale(0.8);opacity:0}
-to{transform:scale(1);opacity:1}
-}
-
-input{
+.modal-content{
 width:100%;
-padding:10px;
-margin:10px 0;
-border-radius:8px;
-border:1px solid #ccc;
+max-width:550px;
+background:white;
+border-radius:35px;
+padding:40px;
+animation:popup .3s ease;
 }
+
+@keyframes popup{
+from{
+transform:scale(.8);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.modal-content h2{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.modal-content p{
+color:#666;
+margin-bottom:30px;
+}
+
+.form-group{
+margin-bottom:20px;
+}
+
+.form-group input,
+.form-group select{
+width:100%;
+padding:18px;
+border-radius:18px;
+border:1px solid #ddd;
+font-size:16px;
+outline:none;
+}
+
+.submit-btn{
+width:100%;
+padding:18px;
+border:none;
+border-radius:60px;
+background:#111;
+color:white;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+}
+
+.close{
+position:absolute;
+top:25px;
+right:25px;
+font-size:28px;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+.footer{
+padding:70px 5%;
+background:white;
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:50px;
+}
+
+.footer h3{
+margin-bottom:20px;
+font-size:24px;
+}
+
+.footer p{
+line-height:1.8;
+color:#666;
+margin-top:20px;
+}
+
+.footer-links{
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+.footer-links a{
+text-decoration:none;
+color:#555;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+.hero-content h1{
+font-size:52px;
+}
+
+.benefit-grid,
+.footer{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:700px){
+
+.nav-links{
+display:none;
+}
+
+.hero-box{
+height:500px;
+}
+
+.hero-content{
+left:30px;
+right:30px;
+}
+
+.hero-content h1{
+font-size:42px;
+}
+
+.section-title h1{
+font-size:42px;
+}
+
+.price{
+font-size:42px;
+}
+
+.modal-content{
+padding:30px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<h1 id="judul"></h1>
+<!-- NAVBAR -->
 
-<div class="card">
-<h2>Paket Reguler</h2>
-<p>✔ Konsultasi</p>
-<p>✔ Pengurusan Dokumen</p>
-<p>✔ Bantuan Interview</p>
-<p><b>Rp 3.500.000</b></p>
-<button onclick="openPopup('Reguler')">Pilih Paket</button>
+<nav class="navbar">
+
+<div class="logo">
+<span>●</span>VisaID
 </div>
 
-<div class="card">
-<h2>Paket Express</h2>
-<p>✔ Semua fitur reguler</p>
-<p>✔ Prioritas Proses</p>
-<p><b>Rp 6.000.000</b></p>
-<button onclick="openPopup('Express')">Pilih Paket</button>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="#">Paket</a>
+<a href="#">FAQ</a>
+<a href="#">Kontak</a>
 </div>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
-<div class="box">
+</nav>
 
-<h3>Isi Data Anda</h3>
+<!-- HERO -->
 
-<input id="nama" placeholder="Nama Lengkap">
-<input id="hp" placeholder="Nomor WhatsApp">
+<section class="hero">
 
-<button onclick="kirim()">Lanjut ke WhatsApp</button>
+<div class="hero-box">
+
+<img src="https://images.unsplash.com/photo-1502920917128-1aa500764ce7?q=80&w=1974&auto=format&fit=crop">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<h1>
+Pilih Paket<br>
+Visa Terbaik
+</h1>
+
+<p>
+Pilih layanan visa premium sesuai kebutuhan perjalanan Anda dengan proses cepat dan aman.
+</p>
 
 </div>
+
 </div>
+
+</section>
+
+<!-- PACKAGE -->
+
+<section class="package-section">
+
+<div class="section-title">
+<h1>Paket Visa</h1>
+<p>Pilih paket yang sesuai kebutuhan Anda</p>
+</div>
+
+<div class="packages">
+
+<!-- BASIC -->
+
+<div class="package">
+
+<h2>Basic</h2>
+
+<div class="price">
+Rp1.5jt
+<span>/orang</span>
+</div>
+
+<div class="feature-list">
+
+<div class="feature">
+<i>✓</i>
+Konsultasi Visa
+</div>
+
+<div class="feature">
+<i>✓</i>
+Pengecekan Dokumen
+</div>
+
+<div class="feature">
+<i>✓</i>
+Support WhatsApp
+</div>
+
+</div>
+
+<button class="btn btn-light" onclick="openModal('Basic')">
+Booking Sekarang
+</button>
+
+</div>
+
+<!-- PREMIUM -->
+
+<div class="package">
+
+<div class="best">
+TERPOPULER
+</div>
+
+<h2>Premium</h2>
+
+<div class="price">
+Rp3.5jt
+<span>/orang</span>
+</div>
+
+<div class="feature-list">
+
+<div class="feature">
+<i>✓</i>
+Semua Fitur Basic
+</div>
+
+<div class="feature">
+<i>✓</i>
+Flight & Hotel
+</div>
+
+<div class="feature">
+<i>✓</i>
+Pengajuan Full Dibantu
+</div>
+
+<div class="feature">
+<i>✓</i>
+Prioritas Approval
+</div>
+
+</div>
+
+<button class="btn btn-dark" onclick="openModal('Premium')">
+Booking Sekarang
+</button>
+
+</div>
+
+<!-- VIP -->
+
+<div class="package">
+
+<h2>VIP</h2>
+
+<div class="price">
+Rp6.5jt
+<span>/orang</span>
+</div>
+
+<div class="feature-list">
+
+<div class="feature">
+<i>✓</i>
+Fast Track Approval
+</div>
+
+<div class="feature">
+<i>✓</i>
+Private Consultant
+</div>
+
+<div class="feature">
+<i>✓</i>
+Hotel Premium
+</div>
+
+<div class="feature">
+<i>✓</i>
+Pendampingan Lengkap
+</div>
+
+</div>
+
+<button class="btn btn-light" onclick="openModal('VIP')">
+Booking Sekarang
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- BENEFIT -->
+
+<section class="benefit">
+
+<div class="section-title">
+<h1>Kenapa Pilih VisaID?</h1>
+<p>Pelayanan premium dengan proses mudah dan cepat</p>
+</div>
+
+<div class="benefit-grid">
+
+<div class="benefit-box">
+<div class="benefit-icon">⚡</div>
+<h3>Fast Process</h3>
+<p>Proses visa cepat dan efisien.</p>
+</div>
+
+<div class="benefit-box">
+<div class="benefit-icon">🔒</div>
+<h3>Aman</h3>
+<p>Data pribadi aman dan terenkripsi.</p>
+</div>
+
+<div class="benefit-box">
+<div class="benefit-icon">🌍</div>
+<h3>100+ Negara</h3>
+<p>Melayani visa berbagai negara.</p>
+</div>
+
+<div class="benefit-box">
+<div class="benefit-icon">💬</div>
+<h3>Support</h3>
+<p>Admin aktif membantu setiap saat.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">&times;</span>
+
+<h2>Booking Visa</h2>
+<p>Isi data diri Anda untuk melanjutkan booking.</p>
+
+<form id="bookingForm">
+
+<div class="form-group">
+<input type="text" id="nama" placeholder="Nama Lengkap" required>
+</div>
+
+<div class="form-group">
+<input type="text" id="wa" placeholder="Nomor WhatsApp" required>
+</div>
+
+<div class="form-group">
+<select id="paket">
+<option>Basic</option>
+<option>Premium</option>
+<option>VIP</option>
+</select>
+</div>
+
+<div class="form-group">
+<input type="text" id="negara" placeholder="Negara Tujuan" required>
+</div>
+
+<button type="submit" class="submit-btn">
+Kirim ke Admin
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div>
+
+<div class="logo">
+<span>●</span>VisaID
+</div>
+
+<p>
+Layanan pengurusan visa internasional terpercaya dengan proses mudah, cepat, dan aman.
+</p>
+
+</div>
+
+<div>
+
+<h3>Company</h3>
+
+<div class="footer-links">
+<a href="#">Home</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms</a>
+</div>
+
+</div>
+
+<div>
+
+<h3>Contact</h3>
+
+<div class="footer-links">
+<a href="#">08816906696</a>
+<a href="#">support@visaid.id</a>
+<a href="#">Jakarta Selatan</a>
+</div>
+
+</div>
+
+</footer>
 
 <script>
 
-/* AMBIL NEGARA */
-let params = new URLSearchParams(location.search)
-let negara = params.get("negara")
+const modal = document.getElementById('modal');
+const paketSelect = document.getElementById('paket');
 
-document.getElementById("judul").innerText =
-"Visa " + negara
-
-let paket = ""
-
-/* POPUP */
-function openPopup(p){
-paket = p
-document.getElementById("popup").style.display="flex"
+function openModal(paket){
+modal.style.display='flex';
+paketSelect.value=paket;
 }
 
-/* KIRIM */
-function kirim(){
-
-let nama = document.getElementById("nama").value
-let hp = document.getElementById("hp").value
-
-let text =
-`Halo Visa ID
-Nama: ${nama}
-No HP: ${hp}
-Negara: ${negara}
-Paket: ${paket}`
-
-window.open("https://wa.me/628816906696?text="+encodeURIComponent(text))
-
+function closeModal(){
+modal.style.display='none';
 }
+
+window.onclick=function(e){
+if(e.target==modal){
+modal.style.display='none';
+}
+}
+
+document.getElementById('bookingForm').addEventListener('submit',function(e){
+
+e.preventDefault();
+
+let nama=document.getElementById('nama').value;
+let wa=document.getElementById('wa').value;
+let paket=document.getElementById('paket').value;
+let negara=document.getElementById('negara').value;
+
+let pesan=
+`Halo Admin VisaID%0A%0ASaya ingin booking visa.%0A%0ANama: ${nama}%0AWhatsApp: ${wa}%0APaket: ${paket}%0ANegara Tujuan: ${negara}`;
+
+window.open(`https://wa.me/628816906696?text=${pesan}`,'_blank');
+
+});
 
 </script>
 
